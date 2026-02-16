@@ -199,7 +199,7 @@ class CartScreen extends StatelessWidget {
                                         children: [
                                           GestureDetector(
                                             onTap: (){
-                                              provider.decrementCount(provider.cart[index]);
+                                             provider.decrementCount(provider.cart[index]);
                                             },
                                             child: Container(
                                               padding: const EdgeInsets.all(5),
@@ -215,7 +215,7 @@ class CartScreen extends StatelessWidget {
                                           ),
                                           SizedBox(width: 8),
                                           Text(
-                                            "${provider.countProduct}",
+                                            "${provider.getCount(provider.cart[index])}",
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 18,
