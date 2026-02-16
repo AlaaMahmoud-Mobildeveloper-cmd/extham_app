@@ -12,7 +12,42 @@ class CartScreen extends StatelessWidget {
     var provider = Provider.of<CartProvider>(context);
     return Scaffold(
       backgroundColor: Color(0xffeeeeee),
-      appBar: AppBar(title: Text("${provider.cart.length}")),
+      appBar: AppBar(title: Text("My Cart",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Colors.black,
+        )
+      ),
+        centerTitle: true,
+          actions:[
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned(
+                  top: 4,
+                  left: 4,
+                  child: provider.cartCount != 0 ? Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text("${provider.cartCount}",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ):SizedBox(),),
+                IconButton(onPressed: (){
+                  Navigator.pushNamed(context, CartScreen.routeName);
+                }, icon: Image.asset("assets/images/cart.png")),
+              ],
+            )
+          ]
+      ),
       body: Padding(
         padding: const EdgeInsets.all(22.0),
         child: Column(
